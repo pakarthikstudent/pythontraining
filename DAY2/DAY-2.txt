@@ -1,0 +1,681 @@
+https://github.com/pakarthikstudent/pythontraining
+-----------------------------------------------------
+
+string methods
+---------------
+ |->split() - split single data(str) ->multiple data(list) based on sep.
+	      default sep is space,\t,\n
+
+ |->join()  - list ->str
+
+ |->strip() - remove \n chars
+
+>>> s='101,raj,sales,pune,1000'
+>>> type(s)
+<class 'str'>
+>>>
+>>> len(s)
+23
+>>> s.split(',')
+['101', 'raj', 'sales', 'pune', '1000']
+>>>
+>>> L = s.split(',')
+>>> L[0]
+'101'
+>>> L[1]
+'raj'
+>>> L[-1]
+'1000'
+>>> int(L[-1]) * 0.12
+120.0
+>>> conf = 'root:x:bin:bash'
+>>> conf.split(':')
+['root', 'x', 'bin', 'bash']
+>>>
+>>> L1=['prodA','p101','1234.23','Ok']
+>>>
+>>> ''.join(L1)
+'prodAp1011234.23Ok'
+>>>
+>>> '-'.join(L1)
+'prodA-p101-1234.23-Ok'
+>>>
+>>> s1='data\n'
+>>> s1
+'data\n'
+>>> s1.strip()
+'data'
+>>> s1
+'data\n'
+>>> s1=s1.strip()
+>>> s1
+'data'
+>>>
+>>> s2='\ndata1\t'
+>>> s2.strip()
+'data1'
+>>> s2.lstrip()
+'data1\t'
+>>> s2.rstrip()
+'\ndata1'
+>>>
+
+Q1. Given List
+
+Emp=['101,raj,sales,pune,1000','102,anu,hr,hyd,2000','103,vijay,sales,bglore,3000']
+
+-> display emp name (title case) and emp working dept(title case)
+-> calculate sum of emp's cost
+-> display total cost - at the end.
+
+Expected Result:
+------------------
+	Raj	Sales
+	Anu	Hr
+	Vijay	Sales
+	---------------------
+	Sum Emp's Cost:6000
+	---------------------
+
+##################################################################################
+File Handling
+----------------
+open('D:\\project1\\Demo1\\p1.txt','r')
+
+mac os ; Linux like os => pwd
+|	 |
+open('/home/userA/project1/p1.csv','r')
+	
+open('p1.txt','r') - check your current directory
+
+macos
+|
+terminal ->cat emp.csv
+
+windows
+|
+cmd -> notepad emp.csv
+
+
+>>> open("emp.csv","r")
+<_io.TextIOWrapper name='emp.csv' mode='r' encoding='cp1252'>
+>>>
+>>> fobj = open("emp.csv","r")
+>>>
+>>> fobj.read()
+'101,ram,sales,pune,1000\n102,leo,prod,bglore,2000\n103,anu,HR,hyd,3000\n104,paul,sales,bglore,3200\n423,zio,sales,pune,3420\n142,anu,prod,chennai,4300\n949,karthik,sales,bglore,3100\n848,tom,hr,chennai,3940\n931,vijay,prod,chennai,3411'
+>>>
+>>> fobj.read()
+''
+>>> fobj = open("emp.csv","r")
+>>> fobj.readlines()
+['101,ram,sales,pune,1000\n', '102,leo,prod,bglore,2000\n', '103,anu,HR,hyd,3000\n', '104,paul,sales,bglore,3200\n', '423,zio,sales,pune,3420\n', '142,anu,prod,chennai,4300\n', '949,karthik,sales,bglore,3100\n', '848,tom,hr,chennai,3940\n', '931,vijay,prod,chennai,3411']
+>>> fobj.readlines()
+[]
+>>> fobj = open("emp.csv","r")
+>>> s=fobj.read()
+>>> fobj.close()
+>>>
+>>> print(s)
+101,ram,sales,pune,1000
+102,leo,prod,bglore,2000
+103,anu,HR,hyd,3000
+104,paul,sales,bglore,3200
+423,zio,sales,pune,3420
+142,anu,prod,chennai,4300
+949,karthik,sales,bglore,3100
+848,tom,hr,chennai,3940
+931,vijay,prod,chennai,3411
+>>>
+>>>
+>>> fobj = open("emp.csv","r")
+>>> L = fobj.readlines()
+>>> fobj.close()
+>>>
+>>> L
+['101,ram,sales,pune,1000\n', '102,leo,prod,bglore,2000\n', '103,anu,HR,hyd,3000\n', '104,paul,sales,bglore,3200\n', '423,zio,sales,pune,3420\n', '142,anu,prod,chennai,4300\n', '949,karthik,sales,bglore,3100\n', '848,tom,hr,chennai,3940\n', '931,vijay,prod,chennai,3411']
+>>>
+>>> for var in L:
+...     print(var)
+...
+101,ram,sales,pune,1000
+
+102,leo,prod,bglore,2000
+
+103,anu,HR,hyd,3000
+
+104,paul,sales,bglore,3200
+
+423,zio,sales,pune,3420
+
+142,anu,prod,chennai,4300
+
+949,karthik,sales,bglore,3100
+
+848,tom,hr,chennai,3940
+
+931,vijay,prod,chennai,3411
+>>>
+>>> for var in L:
+...     print(var.strip())
+...
+101,ram,sales,pune,1000
+102,leo,prod,bglore,2000
+103,anu,HR,hyd,3000
+104,paul,sales,bglore,3200
+423,zio,sales,pune,3420
+142,anu,prod,chennai,4300
+949,karthik,sales,bglore,3100
+848,tom,hr,chennai,3940
+931,vijay,prod,chennai,3411
+>>> L[0]
+'101,ram,sales,pune,1000\n'
+>>>
+>>> L[-1]
+'931,vijay,prod,chennai,3411'
+>>>
+>>> L[-3:] # last 3 lines
+['949,karthik,sales,bglore,3100\n', '848,tom,hr,chennai,3940\n', '931,vijay,prod,chennai,3411']
+>>> exit()
+
+To create a new file
+|
+open('new_filename','w')
+		     =
+
+wobj = open('r1.log','w')
+
+wobj.write('SingleString\n')
+...
+
+wobj.close()
+
+####
+
+read() ->''
+readlines() ->[]
+write('')
+
+|
+Write a python program:
+ 
+  |-> create a new file sales.csv
+
+  |-> read an existing emp.csv file - line by line 
+  |-> use membership operator - filter sales emp's
+			|
+			write list of sales emp's records to sales.csv file
+  ==
+
+wobj = open("sales.csv","w")
+
+fobj = open("emp.csv","r")
+
+L = fobj.readlines()
+
+for var in L:
+   if('sales' in var):
+       wobj.write(var)
+
+fobj.close()
+wobj.close()
+
+###################################################################################
+
+list/tuple - collection of items - index 
+
+dict - collection of items - key
+----
+
+dictName = {'Key1':value,'Key2':value,...'Kn':Vn} 
+========         
+Key must be unique
+value can duplicate
+
+data - key:value
+
+emp={'eid':123,'ename':'Mr.Tom','edept':'sales','ecost':1234} 
+
+	+------------------|--------------+
+	|  Key		   |    Value	  |
+	+------------------|--------------+
+	|  eid		   |    123	  |
+	+------------------|--------------+
+	|  ename	   |    Mr.Tom	  |
+	+------------------|--------------+
+	|  edept           |    sales     |
+	+------------------|--------------+
+	|  ecost           |    1234      |
+	+------------------|--------------+
+
+
+
+Write a python program:
+
+ |-> create an empty dict
+ |-> using while loop - always active
+	      => read productid from <STDIN>
+	      => test - productid is exists or not
+					|	|
+					skip	|
+						=>read a product name
+						=> d[productID]=productName
+	      => Ask choice from user
+				 -> Yes |No
+				     |    |->exit from loop
+
+	
+ |->display list of productid and productName 
+
+
+products={} # empty dict
+
+while(True):
+	pid = input('Enter a productid:')
+	if pid in products:
+		print(f'Usage:Input productID:{pid} is already exists')
+	else:
+		pname = input('Enter a productName:')
+		products[pid] = pname # adding new data to an existing dict
+	
+	choice = input('Wish to exit type Yes or press Y:')
+	if(choice == 'Yes' or choice == 'Y'):
+		break # exit from loop
+
+print("List of product details:-")
+print("-"*30)
+
+for var in products:
+	print(f'{var}\t{products[var]}')
+
+#####
+d={'K1':'V1'}
+
+>>> d={'K1':'V1'}
+>>> d['K1']
+'V1'
+>>> d['k1']
+Traceback (most recent call last):
+  File "<python-input-3>", line 1, in <module>
+    d['k1']
+    ~^^^^^^
+KeyError: 'k1'
+>>>
+>>> d.get('K1')
+'V1'
+>>> d.get('k1')
+>>>
+>>> d['K2']='V2'
+>>> d.setdefault('K3','V3')
+'V3'
+>>> d
+{'K1': 'V1', 'K2': 'V2', 'K3': 'V3'}
+>>>
+>>> for var in d:
+...     print(var)
+...
+K1
+K2
+K3
+>>> d.keys()
+dict_keys(['K1', 'K2', 'K3'])
+>>> d.values()
+dict_values(['V1', 'V2', 'V3'])
+>>> d.items()
+dict_items([('K1', 'V1'), ('K2', 'V2'), ('K3', 'V3')])
+>>>
+#############################################################################
+list	-> [ [],(),{} ]
+	    
+tuple   -> ( [],(),{} )
+
+dict    -> {'K1':[],'K2':(),'K3':{}} 
+
+
+>>> L=[]
+>>> L.append(10)
+>>> L
+[10]
+>>> L.append(100,200)
+Traceback (most recent call last):
+  File "<python-input-4>", line 1, in <module>
+    L.append(100,200)
+    ~~~~~~~~^^^^^^^^^
+TypeError: list.append() takes exactly one argument (2 given)
+>>> L.append([100,200])
+>>> L
+[10, [100, 200]]
+>>> L.append(('D1','D2','D3'))
+>>> L.append({'K1':'V1','K2':'V2'})
+>>> L
+[10, [100, 200], ('D1', 'D2', 'D3'), {'K1': 'V1', 'K2': 'V2'}]
+>>> len(L)
+4
+>>> type(L)
+<class 'list'>
+>>> type(L[1])
+<class 'list'>
+>>> type(L[2])
+<class 'tuple'>
+>>>
+>>> L[0]
+10
+>>> L[1]
+[100, 200]
+>>> L[1][0]
+100
+>>> L[1][1]
+200
+>>> L[1][-1]
+200
+>>> L[1][-1]='data-1' # updating an existing value
+>>> L
+[10, [100, 'data-1'], ('D1', 'D2', 'D3'), {'K1': 'V1', 'K2': 'V2'}]
+>>> L[2]
+('D1', 'D2', 'D3')
+>>> L[2][0]
+'D1'
+>>> L[3]
+{'K1': 'V1', 'K2': 'V2'}
+>>> L[3]['K1']
+'V1'
+>>> L[3]['K1']='updated_version' # modification
+>>> L
+[10, [100, 'data-1'], ('D1', 'D2', 'D3'), {'K1': 'updated_version', 'K2': 'V2'}]
+>>>
+
+Recap
+------
+str -> collection of chars -> ex: s='abcab' -> |a|b|c|a|b|
+|
+bytes ->collection of ASCII -> ex: v = b'abcab' -> |97|98|99|97|98|
+|
+list ->collection of items -> ex: L=['d1','d2','d1','d2']
+|
+tuple ->collection of items -> ex: T=('d1','d2','d1','d2')
+|
+dict ->collection of items ->ex: d={'K1':'V1','K2':'V2','K3':'V1'}
+					   
+Vs
+set ->collection of items
+	- Not index based
+	- Not Key:value based
+	- Not allows duplicate item 
+	
+	s={'K1','V1',10,20,10,20,'K1','V1'} => {'K1','V1',10,20}
+
+
+
+>>> s={10,20,10,20,10,20,30,'d1','d1'}
+>>>
+>>> len(s)
+4
+>>> type(s)
+<class 'set'>
+>>> s
+{10, 20, 'd1', 30}
+>>>
+>>> s.add(40)
+>>> s.update([40,50,60])
+>>> s
+{'d1', 40, 10, 50, 20, 60, 30}
+>>> s.pop(10)
+Traceback (most recent call last):
+  File "<python-input-10>", line 1, in <module>
+    s.pop(10)
+    ~~~~~^^^^
+TypeError: set.pop() takes no arguments (1 given)
+>>>
+>>> s.pop()
+'d1'
+>>> s
+{40, 10, 50, 20, 60, 30}
+>>>
+>>> s.remove(10)
+>>> s
+{40, 50, 20, 60, 30}
+>>> s.discard(40)
+>>>
+>>> s
+{50, 20, 60, 30}
+>>> s.remove(10)
+Traceback (most recent call last):
+  File "<python-input-20>", line 1, in <module>
+    s.remove(10)
+    ~~~~~~~~^^^^
+KeyError: 10
+>>>
+>>> s.discard(40)
+>>> s
+{50, 20, 60, 30}
+>>> for var in s:
+...     print(var)
+...
+50
+20
+60
+30
+>>> 20 in s
+True
+>>> L=['D1','D2','D1','D3','D2','D3','D4']
+>>>
+>>> set(L)
+{'D2', 'D4', 'D3', 'D1'}
+>>>
+>>> list(set(L))
+['D2', 'D4', 'D3', 'D1']
+>>>
+###############################################################################
+
+Activity
+---------
+Q. modify pin example
+
+   |-> create a new file - pin_history.log - append mode
+
+   |-> update user input pin - count - date/time - append to pin_history.log file
+	      ..............           ..........
+
+import time
+time.ctime()
+
+
+Q.  DataFrame 
+
+	|prodID| prodName | salesCount | 
+	|------|----------|------------|
+	| p101 | prodA	  | 100	       |
+	|------|----------|------------|
+	| p102 | prodB	  | 200	       |
+	|------|----------|------------|
+	| p103 | prodC	  | 140	       |
+	|------|----------|------------|
+	| p104 | prodD	  | 300	       |
+	|------|----------|------------|
+	| p105 | prodE	  | 150	       |
+	...
+
+ ->create a dict - product_info
+			- prodID  : []
+			- prodName: []
+			- salesCount:[]
+   dict of list
+
+ -> use pprint ->display product_info
+ |
+ -> create prod.csv file
+	Key1,Key2,Key3
+	..    ... ...
+ ------------------------------------------------------------
+import pprint
+
+prod_info={}
+
+prod_info['prodID']=[]
+prod_info['prodName']=[]
+prod_info['salesCount']=[]
+
+prod_info['prodID'].append('p101')
+prod_info['prodID'].append('p102')
+prod_info['prodID'].append('p103')
+
+prod_info['prodName'].append('prodA')
+prod_info['prodName'].append('prodB')
+prod_info['prodName'].append('prodC')
+
+prod_info['salesCount'].append(100)
+prod_info['salesCount'].append(200)
+prod_info['salesCount'].append(300)
+
+pprint.pprint(prod_info)
+
+wobj = open('products.log','w')
+
+for var in prod_info:
+	wobj.write(f'{var}')
+wobj.close()
+
+##############################################################################
+
+
+write a function - display
+		    ->
+		     required args - prodID,prodName,pcost
+		   ->
+		     default args 
+
+		   -> prodID,prodName - required
+		      default prodCost is 0.0
+
+		   -> use variable length - prodID,prodName,prodCost
+		   -> use keyword args 
+				   ->pass prodInfo in dict format.
+
+--------------------------------------
+def display(pid,pname,pcost):
+	print(pid,pname,pcost)
+
+
+display('p101','prodA',1000)
+--------------------------------------
+def display(pid=0,pname='',pcost=0.0):
+	print(pid,pname,pcost)
+
+display()
+display('p101','prodA',1000)
+--------------------------------------------
+def display(pid,pname,pcost=0.0):
+	print(pid,pname,pcost)
+
+display() # Error ->pid,pname 
+display('p101','prodA')
+display('p101','prodA',1000)
+------------------------------------------------
+def display(*args):
+	if(args):
+		for v in args:
+			print(v)
+	else:
+		print("empty args")
+
+display()
+display('p101','prodA',1000)
+------------------------------------------------
+def display(**kwargs):
+	if(kwargs):
+	   for var in kwargs:
+		print(var,kwargs[var])
+	else:
+	   print("empty args")
+
+display(pid='p101',pname='prodA',pcost=1000) <===
+
+--------------------------------------------------------------------------------
+
+D:\\
+-----
+  |->ab.py
+     ---------
+     port=80
+    -----------
+
+
+E:\\
+----
+  |-> p1.py
+     ---------
+       import ab  ->ModuleNotFound Error
+     ------|------
+	   |-->sys.path
+
+
+import http_template
+
+http_template.login()
+
+import http_template as hp
+hp.login()
+
+import Dir1.Dir2.http_template
+
+Dir1.Dir2.http_template.login()
+
+import Dir1.Dir2.http_template as hp
+hp.login()
+
+winx
+------
+pip install <moduleName>
+
+Linux like os and macos
+-----------------------
+pip3 install <moduleName>
+
+############################################################
+
+ERP/
+   ab.py
+   |__SD/p1.py p2.py ..p50.py
+   |__CRM/pa.py pb.py ..pn.py
+   |__PP/p110.py
+   |__FI/p51.py p52.py Accounts/  p53.py p54.py
+			     |->fa.py fb.py
+	 
+import ERP 
+
+package design
+----------------
+ |->Commandline steps
+
+ step 1: create a project folder 
+ step 2: copy all .py files to project folder
+ |
+ step 3: create a package initialization file __init__.py
+ |
+ step 4: copy all the external symbols(variable,function,class..) to __init__.py file
+	 ................................
+	   |->from keyword
+
+	  from <projectFolder>.<sub1>.<sub2>.<module> import <member>
+
+	  from ERP.ab import f1
+	  from ERP.SD.p2 import *
+	  from FI.Accounts.fa import *
+
+ |
+ step 5: test your folder/package => import <projectFolder>
+				     <projectFolder>.variable/function/class...
+
+
+
+#####################################################################################
+
+
+
+
+
+
+
+
+
+
