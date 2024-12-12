@@ -1,0 +1,1009 @@
+Python Programming
+- procedure style # 
+- oops style
+- functional style
++
+- use python modules - json,webscrab,requests,excel,regx,db...
+###################################################
+python native types
+---------------------
+class <--> object design model
+
+10 <-- object
+---
+ |<-- int class
+
+10.0 <-- object
+----
+ |<-- float class
+
+'10' '10.0' <-- object
+------------
+ |<-- str class
+
+How to determine type?
+
+type()
+|
+type(value)
+
+Numbers		bool		NoneType   collection
+|->int		|->True		|->None	   -------------
+|->float	|->False		    |->str,bytes,list,tuple
+|->complex				    |->dict,set
+				
+variable
+----------
+ |->namespace (or) placeholder 
+ |->user defined
+
+How to initialize a value to variable?
+
+variableName = value
+------------
+|->1. variablename starts with a-zA-Z_ 
+|->2. variablename not starts with digits (ex: 5var=10 - Error;var5=10 OK)
+|->3. variablename not allows space and any specialchars
+
+|->4. don't use python keyword as a variable 
+
+Q1. Write a python program - display product details
+    (ex: productname,vendor,code,cost,status)
+	 |->router   |->cisco |->r123 |->1000.32 |->True
+	    ''		''	 ''	 		
+ print("router")
+ print("cisco")
+ print("r123")
+ print(1000.32)
+ print(True)
+
+pname = 'router'
+vname = 'cisco'
+code = 'r123'
+cost = 1000.32  # cost = '1000.32Rs'
+product_status = True
+
+print(pname)
+print(vname)
+print(code,cost,product_status)
+
+###################################
+
+multiline string
+------------------
+print('''data1
+data2
+data3''')
+-------------------
+typecasting
+--------------
+n=56
+print(type(n))
+<class 'int'>
+
+float(n)
+56.0
+
+str(n)
+'56'
+f=1.4523
+type(f)
+<class 'float'>
+
+int(f)
+1
+str(f)
+'1.4523'
+n
+56
+n=float(n)
+n
+56.0
+
+
+sa='45'
+type(sa)
+<class 'str'>
+int(sa)
+45
+float(sa)
+45.0
+sb='abc'
+type(sb)
+<class 'str'>
+int(sb)
+Traceback (most recent call last):
+  File "<pyshell#23>", line 1, in <module>
+    int(sb)
+ValueError: invalid literal for int() with base 10: 'abc'
+
+n=56
+print(type(n))
+<class 'int'>
+
+float(n)
+56.0
+
+str(n)
+'56'
+f=1.4523
+type(f)
+<class 'float'>
+
+int(f)
+1
+str(f)
+'1.4523'
+n
+56
+n=float(n)
+n
+56.0
+
+
+sa='45'
+type(sa)
+<class 'str'>
+int(sa)
+45
+float(sa)
+45.0
+sb='abc'
+type(sb)
+<class 'str'>
+int(sb)
+Traceback (most recent call last):
+  File "<pyshell#23>", line 1, in <module>
+    int(sb)
+ValueError: invalid literal for int() with base 10: 'abc'
+
+## 
+
+expression
+----------
+ 1. infix => <operand> <OPERATOR> <operand>  10+20 10<20
+ 2. prefix  X
+ 3. postfix X
+python supports infix type of expression only
+
+python operators
+-----------------
+1. arithmetic (inputs: int,float ->output:int,float)
+   + - * / // % **		 
+
+
+ n=5
+ n=n+1 # OK
+
+ n=5
+ n+=1 # OK same as -> n = n + 1
+
+
+2. string (input: str,int ->output: str)
+   + *
+
+n=56
+print(type(n))
+<class 'int'>
+
+float(n)
+56.0
+
+str(n)
+'56'
+f=1.4523
+type(f)
+<class 'float'>
+
+int(f)
+1
+str(f)
+'1.4523'
+n
+56
+n=float(n)
+n
+56.0
+
+10+20
+30
+10+20.0
+30.0
+int(10+20.0)
+30
+float(45+55)
+100.0
+45/5
+9.0
+45//5
+9
+2**3
+8
+4**3
+64
+2**3.0
+8.0
+cost='3456.23\n'
+cost * 0.18
+Traceback (most recent call last):
+  File "<pyshell#10>", line 1, in <module>
+    cost * 0.18
+TypeError: can't multiply sequence by non-int of type 'float'
+
+#################
+
+3. Relational Operators (inputs: int,float,str -> output:bool True/False)
+   == != < <= > >=			
+   -----
+>>> 100 >50
+True
+>>> 100 < 50
+False
+>>> 100 < 100
+False
+>>> 100 <= 100
+True
+>>> 'python' == 'Python'
+False
+>>>
+>>> 'ab' != 'AB'
+True
+>>>
+#####
+>>> 100 >50
+True
+>>> 100 < 50
+False
+>>> 100 < 100
+False
+>>> 100 <= 100
+True
+>>> 'python' == 'Python'
+False
+>>>
+>>> 'ab' != 'AB'
+True
+>>> 1.23 >0.02
+True
+>>>
+>>> va = 50
+>>> vb = 60
+>>> vc = '70'
+>>>
+>>> # str(va) + str(vb) ->(A)
+>>> # int(vc) + vb  ---->(B)
+>>>
+>>> # va + vc --->(C)
+>>>
+>>> str(va) + str(vb) #->(A)
+'5060'
+>>>
+>>> int(vc) + vb  #---->(B)
+130
+>>>
+>>> va + vc #--->(C)
+Traceback (most recent call last):
+  File "<python-input-23>", line 1, in <module>
+    va + vc #--->(C)
+    ~~~^~~~
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+>>>
+>>> 10+'A'
+Traceback (most recent call last):
+  File "<python-input-25>", line 1, in <module>
+    10+'A'
+    ~~^~~~
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+>>>
+>>>
+
+###########################
+Logical Operators (inputs: int,float,str -> output:bool True/False)
+-----------------
+ |->test more than one condition //use logical operators
+
+and
+or
+not
+--------//keywords
+
+>>> port='560'
+>>>
+>>> int(port) >500 and int(port) <600
+True
+>>> int(port) >500 and int(port) <6000
+True
+>>> int(port) >500 and int(port) <400
+False
+>>> app='flask'
+>>>
+>>> app == 'fastApi' or app == 'flask'
+True
+>>>
+>>> True
+True
+>>> not True
+False
+>>> not False
+True
+>>>
+#####################################
+String
+---------
+ |->Collection of chars 
+ |->index based 
+ |-> '' <or> "" 
+
+ s='python'  -> s | p | y | t | h | o | n |
+		  | 0 | 1 | 2 | 3 | 4 | 5 | <== index
+		    -6 -5  -4   -3  -2  -1  <== index
+
+ |-> python string -> immutable 
+
+ |-> How to fetch/get single char ?
+
+	stringname[index] ->result/IndexError
+
+ s[0] ->'p'
+
+ s[1] ->'y'
+
+ s[-1] ->'n'
+
+ s[1] = 'x' ->Error - immutable 
+
+len(input_string) ->output_int
+=================
+
+slicing
+---------
+stringName[n] ->nth index 
+
+stringName[n:m] ->from nth index to m-1 index
+		       ---------    ===
+stringName[n:] -->from nth index to All
+
+
+>>> len('')
+0
+>>> len('abc')
+3
+>>> len('ab c')
+4
+>>> len('ab :c')
+5
+>>> s='python programming language'
+>>> len(s)
+27
+>>> s[0]
+'p'
+>>> s[1]
+'y'
+>>> s[26]
+'e'
+>>> s[-1]
+'e'
+>>> s[7]
+'p'
+>>> s[7:13] # from 7th index to 12th index(13-1)
+'progra'
+>>> s[7:] # from 7th index to list of all
+'programming language'
+>>>
+>>> s[-7:] # last 7chars
+'anguage'
+>>> s[1]
+'y'
+>>> s[1]='X'
+Traceback (most recent call last):
+  File "<python-input-17>", line 1, in <module>
+    s[1]='X'
+    ~^^^
+TypeError: 'str' object does not support item assignment
+>>>
+############################################################
+string methods
+---------------
+
+fx() 
+
+obj.fx() 
+
+>>> s='python'
+>>>
+>>> s.upper()
+'PYTHON'
+>>>
+>>> 'ABC'.lower()
+'abc'
+>>>
+>>> 'ABC'.title()
+'Abc'
+>>>
+>>> s.islower()
+True
+>>> s.isupper()
+False
+>>>
+help(str)
+
+####
+In Python any expression ->bool value (or) any method ->bool value //use conditional statement
+
+if statement
+-------------
+i) if only
+ii) if else
+iii) if elif elif elif ..elif else
+.....................................
+
+Task
+-----
+Q1. Write a python program:
+	|->read an app name from <STDIN>
+	|->read a port number from <STDIN>
+
+	|->test: app name is flask (or) fastapi
+		 - any one app name is matched - display app name and port number
+
+app = input('Enter an app name:')
+if( app == 'flask' or app == 'fastapi'):
+	port = input(f'Enter a {app} port number:')
+	print(f'App name is:{app} running port number is:{port}')
+else:
+	print(f'Sorry inputApp {app} is not matched')
+	exit() # exit from python execution
+-----------------------------------------------------
+
+	
+Q2. Write a python program:
+	|-> read a shell name from <STDIN>
+	     |
+	     |->test input shell name is bash - initialize a profile file name is bashrc
+		test input shell name is ksh  - initialize a profile file name is kshrc
+		test input shell name is csh  - initialize a profile file name is cshrc
+		|
+		default shell is nologin and profile filename /etc/profile
+	
+	|-> display shell name and profile filename.
+
+sh_name = input('Enter a shell name:')
+if(sh_name == 'bash'):
+	fname = 'bashrc'
+elif(sh_name == 'ksh'):
+	fname = 'kshrc'
+elif(sh_name == 'csh'):
+	fname = 'cshrc'
+else:
+	sh_name = 'nologin'
+	fname = '/etc/profile'
+
+print(f'shell name is:{sh_name} and profile file name is:{fname}')
+
+##########
+
+Q3. Write a python program:
+	1. read any digit from <STDIN> //default type is str
+	2. test input value is [0-9] 	// <inputValue>.isdigit() ->True/False
+			|->type cast to int - simple arithmetic
+	   - msg: sorry input is not a numerical format.
+
+ n = input('Enter n value:')
+
+ if(n.isdigit()):
+	n=int(n)+100
+	print(f'Incremented n value is:{n}')
+ else:
+	print(f'Sorry input n value {n} is not a digit format')
+
+####################################################################################
+>>> n=45
+>>> str(n)
+'45'
+>>> float(n)
+45.0
+>>>
+>>> bool(n)
+True
+>>> bool(0)
+False
+>>> bool(0.0)
+False
+>>> bool('')
+False
+>>> bool(None)
+False
+>>> bool([])
+False
+>>> bool(())
+False
+>>> bool({})
+False
+>>> if(n):
+...     print('Yes - true block')
+... else:
+...     print('No - false block')
+...
+Yes - true block
+>>>
+>>>
+>>> name = input('Enter your name:')
+Enter your name:
+>>> if(len(name) == 0):
+...     print('Sorry your input is missing')
+... else:
+...     print(f'Hello {name}')
+...
+Sorry your input is missing
+>>>
+>>>
+>>> name = input('Enter your name:')
+Enter your name:
+>>> bool(name)
+False
+>>> name
+''
+>>> if(name):
+...     print(f'Hello {name}')
+... else:
+...     print('Sorry your input is missing')
+...
+Sorry your input is missing
+>>>
+>>>
+>>> name = input('Enter your name:')
+Enter your name:raj
+>>> if(name):
+...     print(f'Hello {name}')
+... else:
+...     print('Sorry your input is missing')
+...
+Hello raj
+>>>
+##########################################################################
+>>> s='12345678'
+>>>
+>>> for var in s:
+...     print(var,type(var))
+...
+1 <class 'str'>
+2 <class 'str'>
+3 <class 'str'>
+4 <class 'str'>
+5 <class 'str'>
+6 <class 'str'>
+7 <class 'str'>
+8 <class 'str'>
+>>>
+>>> s[0]
+'1'
+>>> s[1]
+'2'
+>>> 0+1+2+3+4+5+6+7+8
+36
+>>> t=0
+>>> for var in s:
+...     t=t+int(var)
+...
+>>> t
+36
+>>>
+###############################
+>>> while(False):
+...     print("Hello")
+...
+>>> while(False):
+...     print("Hello")
+... else:
+...     print("Thank you")
+...
+Thank you
+>>> i=0
+>>> while(i<5):
+...     print('Test server:'+str(i))
+...     i = i + 1
+... else:
+...     print('-'*15)
+...     print(' Thank you')
+...     print('-'*15)
+...
+Test server:0
+Test server:1
+Test server:2
+Test server:3
+Test server:4
+---------------
+ Thank you
+---------------
+>>> for v in 'abc':
+...     print(v.upper())
+... else:
+...     print('Thank you')
+...
+A
+B
+C
+Thank you
+>>>
+#########################################
+>>> s='abcd'
+>>>
+>>> s[0]
+'a'
+>>> s[1]
+'b'
+>>> s[2]
+'c'
+>>> s[3]
+'d'
+>>> len(s)
+4
+>>>
+>>> count=0
+>>> while(count < len(s)):
+...     print(s[count])
+...     count += 1
+...
+a
+b
+c
+d
+>>>
+###############################################################
+bytes
+-----
+>>> s='abCDef'
+>>>
+>>> # str -> Collection of chars
+>>>
+>>> v = b'abCDef'
+>>>
+>>> # bytes -> Collection of ASCII
+>>>
+>>> type(s)
+<class 'str'>
+>>>
+>>> type(v)
+<class 'bytes'>
+>>>
+>>> s[0]
+'a'
+>>> v[0]
+97
+>>> v[1]
+98
+>>> for var in v:
+...     print(var)
+...
+97
+98
+67
+68
+101
+102
+>>> v.decode()
+'abCDef'
+>>> msg='''Hello Tom How are you
+... this is test messge
+... from host01 mc '''
+>>>
+>>> msg.encode()
+b'Hello Tom How are you\nthis is test messge \nfrom host01 mc '
+>>>
+>>>
+>>> r = msg.encode()
+>>>
+>>> r.decode()
+'Hello Tom How are you\nthis is test messge \nfrom host01 mc '
+>>>
+###################################################################################
+
+prod_name = 'router'
+prod_code = 467
+prod_cost = 23423.32
+prod_status = True
+
+
+prod_info = [prod_name,prod_code,prod_cost,prod_status] # list
+
+type(prod_info)
+<class 'list'>
+
+prod_info[0]
+'router'
+for var in prod_info:
+    print(var,type(var))
+
+    
+router <class 'str'>
+467 <class 'int'>
+23423.32 <class 'float'>
+True <class 'bool'>
+prod_info[0]
+'router'
+prod_info[-2:]
+[23423.32, True]
+
+#####################################################################
+
+To add new data to an existing list
+
+listname.append(Value) ->None 
+  Vs
+listname.insert(index,Value) ->None
+
+>>> s='abc'
+>>>
+>>> s.upper()
+'ABC'
+>>> s
+'abc'
+>>> L=['D1','D2']
+>>>
+>>> L
+['D1', 'D2']
+>>>
+>>> L.append('D3')
+>>>
+>>> L
+['D1', 'D2', 'D3']
+>>> L.append(145)
+>>> L.append(14.343)
+>>> L.append(True)
+>>>
+>>> L
+['D1', 'D2', 'D3', 145, 14.343, True]
+>>>
+>>> L.insert(3,'data-3')
+>>> L
+['D1', 'D2', 'D3', 'data-3', 145, 14.343, True]
+>>>
+
+How to delete/remove an existing value ?
+
+Listname.pop(index) ->removed nth IndexValue / IndexError
+	Vs
+				
+Listname.pop() ->remove_last index value 
+
+
+>>> L
+['D1', 'D2', 'D3', 'data-3', 145, 14.343, True]
+>>>
+>>>
+>>> L.pop()
+True
+>>> L
+['D1', 'D2', 'D3', 'data-3', 145, 14.343]
+>>> L.pop(1)
+'D2'
+>>>
+>>> L
+['D1', 'D3', 'data-3', 145, 14.343]
+>>> L.pop(15)
+Traceback (most recent call last):
+  File "<python-input-27>", line 1, in <module>
+    L.pop(15)
+    ~~~~~^^^^
+IndexError: pop index out of range
+>>>
+
+
+How to modify an existing value?
+	
+	ListName[old_index] = updatedValue
+
+
+>>> L
+['D1', 'D3', 'data-3', 145, 14.343]
+>>>
+>>> L[1]='4590.23Rs'
+>>>
+>>> L
+['D1', '4590.23Rs', 'data-3', 145, 14.343]
+>>>
+#########
+
+>>> files=['p1.c','p2.cpp','p3.java']
+>>>
+>>> files.append('p1.c')
+>>> files.append('p1.py')
+>>> files.append('p1.c')
+>>> files.append('p2.cpp')
+>>> files.append('p3.java')
+>>> files.append('p3.java')
+>>> files.append('p3.java')
+>>> files.append('p3.java')
+>>> files.append('p4.java')
+>>>
+>>>
+>>> files
+['p1.c', 'p2.cpp', 'p3.java', 'p1.c', 'p1.py', 'p1.c', 'p2.cpp', 'p3.java', 'p3.java', 'p3.java', 'p3.java', 'p4.java']
+>>>
+>>> files.count('p3.java')
+5
+>>> files.count('p6.java')
+0
+>>> s='abcabdabfacty'
+>>>
+>>> s.count('a')
+4
+>>> s[1]
+'b'
+>>> s[5]
+'d'
+>>> s[15]
+Traceback (most recent call last):
+  File "<python-input-60>", line 1, in <module>
+    s[15]
+    ~^^^^
+IndexError: string index out of range
+>>>
+>>> s.index('d')
+5
+>>> s[s.index('d')]
+'d'
+>>>
+###########
+
+membership operators (inputs are: str,bytes,list,tuple,dict,set -> output:bool)
+----------------------------------------------------------------------------------
+in
+not in			
+
+Syntax:-
+--------
+'pattern_string' in input_Collection
+
+>>> "emp.csv" in os.listdir(".")
+True
+>>>
+>>> "emp.log" in os.listdir(".")
+False
+>>>
+#############################################################################################
+
+list []
+----
+ |->Collection of items(different types)
+ |->index based
+ |->mutable(we can add/modify/delete)
+ |->supports membership operators
+
+Vs
+
+tuple ()
+-----
+ |->Collection of items(different types)
+ |->index based
+ |->immutable(we can't add/modify/delete)
+ |->supports membership operators
+
+
+name() <-- function  Vs  name=() <-- tuple
+			      
+va=(10,1.3,'data') 
+|
+type(va) -> <class 'tuple'>
+
+vb=10
+|
+type(vb) -> <class 'int'>
+
+vc=10,
+|
+type(vc) -> <class 'tuple'>
+
+
+va = 10
+type(va)
+<class 'int'>
+va = 10,
+type(va)
+<class 'tuple'>
+va
+(10,)
+T=(100,1.35,'data')
+len(T)
+3
+T[0]
+100
+T[-1]
+'data'
+T[-2:]
+(1.35, 'data')
+for var in T:
+    print(var)
+    
+100
+1.35
+data
+#############################################################
+
+Config=("/etc/file1","/etc/file2","/etc/file3")
+
+type(Config)
+<class 'tuple'>
+
+# add new config file - D:\\file1.conf
+# delete /etc/file2 file
+# modify /etc/file1 ------> /etc/sysconfig/file1.cfg
+# ......
+
+list(Config) # typecast to list
+['/etc/file1', '/etc/file2', '/etc/file3']
+
+Config
+('/etc/file1', '/etc/file2', '/etc/file3')
+
+tv = list(Config) # typecast to list
+tv
+['/etc/file1', '/etc/file2', '/etc/file3']
+tv.pop(0) # delete 0th index
+'/etc/file1'
+tv.append('D:\\file1.conf')
+tv
+['/etc/file2', '/etc/file3', 'D:\\file1.conf']
+tv[0] = '/etc/sysconfig/file1.cfg'
+tv
+['/etc/sysconfig/file1.cfg', '/etc/file3', 'D:\\file1.conf']
+tuple(tv)
+('/etc/sysconfig/file1.cfg', '/etc/file3', 'D:\\file1.conf')
+
+Config = tuple(tv) # typecast to tuple
+Config
+('/etc/sysconfig/file1.cfg', '/etc/file3', 'D:\\file1.conf')
+
+#################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
