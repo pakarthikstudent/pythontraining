@@ -1,0 +1,268 @@
+def fx(a,b,c): <== required args  Vs   def fy(a=100,b="Data",c=True): <-- default args
+    print("Hello",a,b,c)		  print("Hello",a,b,c)
+
+fx(Value1,value2,value3) 
+   ^^^^^^^^^^^^^^^^^^^^
+	any python values
+
+fx()					fy() ->Hello 100 Data True
+fx(Value1)                              fy("V1") ->Hello V1 Data True
+fx(Value1,Value2)                       fy("V1","V2") ->Hello V1 V2 True
+fx(V1,v2,v3,v4)                         fy("V1","V2","V3") ->Hello V1 V2 V3
+------------------//Error               fy("V1","V2","V3","V4") ->Error
+
+recap Listname.pop()                   def pop(index=-1):
+
+L=[10,20,30,40,50]
+L.pop() #OK <---------- default index is -1
+L.pop(2) #OK
+
+L.pop(2,3) # Error
+######################################################################################
+OOPs style
+-----------
+ |->class
+ |->object
+ |->method
+ |->inheritance 
+
+
+ |->class - blueprint of object
+          - type
+
+ |-> class classname:
+	<attribute>
+ 
+ |-> we can access class attribute using classname . (dot)
+
+    classname.<attribute>
+
+ |->python user defined class - mutable - we can add/modify/delete
+
+     
+ +------------------+
+ | [ ]              |
+ |          (white) |  <== blueprint sheet - class
+ |    |   |  [ ]    |
+ |                  |
+ +------------------+
+  |		|  |____
+  |             |       |
+[Building1]  [B2] ... [Bn] <== real building 
+  |           |         |
+ 1st main   2nd main    nth main <== Address
+ (memory)
+
+
+
+>>>
+>>> class box:
+...     pass
+...
+>>> box
+<class '__main__.box'>
+>>>
+>>> box()
+<__main__.box object at 0x00000124BEA781A0>
+>>> box()
+<__main__.box object at 0x00000124BE9AF4D0>
+>>>
+>>> class product:
+...     pid = 101
+...
+>>> product.pid
+101
+>>> obj1 = product()
+>>> obj2 = product()
+>>> type(obj1)
+<class '__main__.product'>
+>>> type(obj2)
+<class '__main__.product'>
+>>>
+>>> obj1.pid
+101
+>>> obj2.pid
+101
+>>> product.pid=505 # using class name - we can modify an existing attribute
+>>> obj1.pid
+505
+>>> obj2.pid
+505
+>>> obj1.pid = 'p-111' # object based initialization
+>>> obj1.pid
+'p-111'
+>>> obj2.pid
+505
+>>> product.pid=605
+>>> print(obj1.pid,obj2.pid)
+p-111 605
+>>> obj2.pid='p-222'
+>>> product.pid=705
+>>> obj3=product()
+>>>
+>>> print(obj1.pid,obj2.pid,obj3.pid)
+p-111 p-222 705
+>>>
+>>>
+>>> def f2():
+...     print("Hello")
+...
+>>> f2()
+Hello
+>>> f2(10)
+Traceback (most recent call last):
+  File "<python-input-33>", line 1, in <module>
+    f2(10)
+    ~~^^^^
+TypeError: f2() takes 0 positional arguments but 1 was given
+>>>
+>>> class box:
+...     var=120
+...     def f1(self):
+...         print(self.var)
+...         self.var=200
+...
+>>> obj = box()
+>>> # obj.f1()
+>>> obj = box()
+>>> obj.f1()
+120
+>>> obj.var
+200
+>>>
+
+###################################################################
+
+class DBI:
+  def connect(self,....):
+	'''to establish db connection'''
+
+  def method1(self):
+	'''Query-1'''
+
+  def method2(self):
+	'''Query-2'''
+
+obj = DBI()
+
+obj.method2() # we can call method2() - But DB operation is failed
+
+|
+constructor - special method - initialization
+|
+in python   __init__()
+
+>>>
+>>> class box1:
+...     def f1(self):
+...         print("Non-Constructor")
+...
+>>> box1()
+<__main__.box1 object at 0x0000026C9B3081A0>
+>>> obj = box1()
+>>> obj.f1()
+Non-Constructor
+>>>
+>>> class box2:
+...     def __init__(self):
+...         print("Constructor Block")
+...
+>>> box2()
+Constructor Block
+<__main__.box2 object at 0x0000026C9B3086E0>
+>>> obj = box2()
+Constructor Block
+>>>
+>>> class box2:
+...     def __init__(self,a1,a2=0,*a3,**a4):
+...         print('initialization block')
+...         print(a1,a2,a3,a4)
+...
+>>> obj = box2(100)
+initialization block
+100 0 () {}
+>>>
+>>> obj = box2(100,200,300,400)
+initialization block
+100 200 (300, 400) {}
+>>> obj = box2(100,200,300,400,DB='mysql')
+initialization block
+100 200 (300, 400) {'DB': 'mysql'}
+>>>
+
+########################################################################
+
+special attribute (or) builtin attributes
+
+ __<attributeName>__ 
+
+##########################################################################
+
+class className:
+	__variable = <value>  <== private variable
+	def __functionName(self): <== private method
+		..
+		self.__variable # OK
+
+
+
+obj = className()
+obj.__variable ->Error 
+
+
+
+
+>>>
+>>> s1='hello'
+>>> len(s1)
+5
+>>> s2=str('hello')
+>>> s2.__len__()
+5
+>>> i=10
+>>> len(i)
+Traceback (most recent call last):
+  File "<python-input-6>", line 1, in <module>
+    len(i)
+    ~~~^^^
+TypeError: object of type 'int' has no len()
+>>>
+>>> '__len__' in dir(int)
+False
+>>> '__len__' in dir(str)
+True
+>>> class myclass:
+...     def __init__(self,a=0):
+...         self.a=a
+...     def __len__(self):
+...         return self.a
+...     def __str__(self):
+...         return str(self.a)
+...     def __call__(self):
+...         return "Hello"
+...
+>>> obj = myclass()
+>>> len(obj)
+0
+>>> str(obj)
+'0'
+>>> obj()
+'Hello'
+>>>
+
+#######################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
